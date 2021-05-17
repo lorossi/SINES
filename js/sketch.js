@@ -5,8 +5,11 @@ class Sketch extends Engine {
     this._duration = 900;
     this._lines_num = 10;
     this._intro_ratio = 0.05;
-    this._lines_width = 3;
+    this._lines_width = 2;
     this._recording = false;
+
+    this._line_colors = [new Color(255, 0, 255), new Color(0, 255, 255), new Color(230, 230, 230)];
+    this._dpos = [{ x: 0, y: -1 }, { x: 0, y: 1 }, { x: 0, y: 0 }];
   }
 
   setup() {
@@ -103,14 +106,26 @@ class Sketch extends Engine {
     this.ctx.lineWidth = this._lines_width;
 
     for (let i = 0; i < lines.length; i++) {
-      const alpha = easeOut(1 - i / lines.length) * 255;
-      this.ctx.strokeStyle = `rgba(230, 230, 230, ${alpha})`;
-      this.ctx.beginPath();
-      for (let j = 0; j < lines[i].length; j++) {
-        if (j == 0) this.ctx.moveTo(lines[i][j].x, lines[i][j].y);
-        else this.ctx.lineTo(lines[i][j].x, lines[i][j].y);
+      const alpha = easeOut(1 - i / lines.length);
+
+      for (let j = 0; j < this._line_colors.length; j++) {
+        this.ctx.save();
+        this.ctx.translate(this._dpos[j].x, this._dpos[j].y);
+
+        let current_color = this._line_colors[j];
+        if (j < this._line_colors[j] - 1) current_color.alpha = alpha / 4;
+        else current_color.alpha = alpha;
+
+        this.ctx.strokeStyle = current_color.rgba;
+
+        this.ctx.beginPath();
+        for (let j = 0; j < lines[i].length; j++) {
+          if (j == 0) this.ctx.moveTo(lines[i][j].x, lines[i][j].y);
+          else this.ctx.lineTo(lines[i][j].x, lines[i][j].y);
+        }
+        this.ctx.stroke();
+        this.ctx.restore();
       }
-      this.ctx.stroke();
     }
     this.ctx.restore();
 
