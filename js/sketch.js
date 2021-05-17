@@ -8,8 +8,8 @@ class Sketch extends Engine {
     this._lines_width = 2;
     this._recording = false;
 
-    this._line_colors = [new Color(255, 0, 255), new Color(0, 255, 255), new Color(230, 230, 230)];
-    this._dpos = [{ x: 0, y: -1 }, { x: 0, y: 1 }, { x: 0, y: 0 }];
+    this._line_colors = [new Color(192, 0, 192), new Color(0, 192, 240), new Color(230, 230, 230)];
+    this._dpos = [{ x: 1, y: 0 }, { x: -1, y: 0 }, { x: 0, y: 0 }];
   }
 
   setup() {
