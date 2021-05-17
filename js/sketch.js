@@ -1,5 +1,6 @@
 class Sketch extends Engine {
   preload() {
+    // sketch parameters
     this._border = 0.26;
     this._scl = 1;
     this._duration = 900;
@@ -7,9 +8,21 @@ class Sketch extends Engine {
     this._intro_ratio = 0.05;
     this._lines_width = 2;
     this._recording = false;
-
-    this._line_colors = [new Color(192, 0, 192), new Color(0, 192, 240), new Color(230, 230, 230)];
-    this._dpos = [{ x: 1, y: 0 }, { x: -1, y: 0 }, { x: 0, y: 0 }];
+    // color
+    this._line_colors = [
+      {
+        color: new Color(192, 0, 192),
+        dpos: { x: 1, y: 0 },
+      },
+      {
+        color: new Color(0, 192, 240),
+        dpos: { x: -1, y: 0 },
+      },
+      {
+        color: new Color(230, 230, 230),
+        dpos: { x: 0, y: 0 },
+      }
+    ];
   }
 
   setup() {
@@ -110,9 +123,9 @@ class Sketch extends Engine {
 
       for (let j = 0; j < this._line_colors.length; j++) {
         this.ctx.save();
-        this.ctx.translate(this._dpos[j].x, this._dpos[j].y);
+        this.ctx.translate(this._line_colors[j].dpos.x, this._line_colors[j].dpos.y);
 
-        let current_color = this._line_colors[j];
+        const current_color = this._line_colors[j].color;
         if (j < this._line_colors[j] - 1) current_color.alpha = alpha / 4;
         else current_color.alpha = alpha;
 
