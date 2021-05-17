@@ -1,14 +1,14 @@
 class Sketch extends Engine {
   preload() {
     // sketch parameters
-    this._border = 0.26;
+    this._border = 0.2;
     this._scl = 1;
     this._duration = 900;
-    this._lines_num = 10;
+    this._lines_num = 15;
     this._intro_ratio = 0.05;
     this._lines_width = 2;
     this._recording = false;
-    // color
+    // color and aberration
     this._line_colors = [
       {
         color: new Color(192, 0, 192),
@@ -144,7 +144,7 @@ class Sketch extends Engine {
 
     // handle recording
     if (this._recording) {
-      if (this.frameCount <= this._duration) {
+      if (this.frameCount < this._duration) {
         this._capturer.capture(this._canvas);
       } else {
         this._recording = false;
@@ -153,7 +153,6 @@ class Sketch extends Engine {
         console.log("%c Recording ended", "color: red; font-size: 2rem");
       }
     }
-
   }
 }
 
