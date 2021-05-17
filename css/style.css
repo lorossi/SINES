@@ -46,16 +46,17 @@ a:visited, a:active {
   bottom: 1vh;
 
   display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
 }
 
-@media only screen and (max-width: 600px) {
-  body {
-    font-size: var(--mobile-text-size);
-  }
+.footer a {
+  padding-left: 2vw;
+  padding-right: 2vw;
+}
 
+@media only screen and (max-width: 600px) {
   #sketch {
     height: 95vw;
     width: 95vw;
