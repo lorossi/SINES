@@ -1,19 +1,34 @@
 class Sketch extends Engine {
   preload() {
-    this._border = 0.2;
+    this._border = 0.26;
     this._scl = 1;
     this._duration = 900;
     this._lines_num = 10;
-    this._intro_ratio = 0.1;
+    this._intro_ratio = 0.05;
+    this._lines_width = 3;
+    this._recording = false;
   }
 
   setup() {
+    // size calculations
     this._border_width = (this._border * this.width) / 2;
     this._inner_width = this.width * (1 - this._border);
     this._max_ampl = this._inner_width / 2;
+    // setup capturer
+    this._capturer_started = false;
+    if (this._recording) {
+      this._capturer = new CCapture({ format: "png" });
+    }
   }
 
   draw() {
+    // start capturer
+    if (!this._capturer_started && this._recording) {
+      this._capturer_started = true;
+      this._capturer.start();
+      console.log("%c Recording started", "color: green; font-size: 2rem");
+    }
+
     const percent = (this.frameCount % this._duration) / this._duration;
     // phase 0, 2: line expanding/retracting
     // phse 1: actual sines
@@ -85,7 +100,7 @@ class Sketch extends Engine {
     this.ctx.fillRect(0, 0, this.width, this.height);
     // all coords are relative to y = height/2
     this.ctx.translate(0, this.height / 2);
-    this.ctx.lineWidth = 2;
+    this.ctx.lineWidth = this._lines_width;
 
     for (let i = 0; i < lines.length; i++) {
       const alpha = easeOut(1 - i / lines.length) * 255;
@@ -98,6 +113,19 @@ class Sketch extends Engine {
       this.ctx.stroke();
     }
     this.ctx.restore();
+
+    // handle recording
+    if (this._recording) {
+      if (this.frameCount <= this._duration) {
+        this._capturer.capture(this._canvas);
+      } else {
+        this._recording = false;
+        this._capturer.stop();
+        this._capturer.save();
+        console.log("%c Recording ended", "color: red; font-size: 2rem");
+      }
+    }
+
   }
 }
 
