@@ -4,19 +4,19 @@ class Sketch extends Engine {
     this._border = 0.2;
     this._scl = 1;
     this._duration = 900;
-    this._lines_num = 15;
+    this._lines_num = 25;
     this._intro_ratio = 0.05;
-    this._lines_width = 2;
+    this._lines_width = 1;
     this._recording = false;
     // color and aberration
     this._line_colors = [
       {
-        color: new Color(192, 0, 192),
-        dpos: { x: 1, y: 0 },
+        color: new Color(255, 0, 255),
+        dpos: { x: -1, y: 1 },
       },
       {
-        color: new Color(0, 192, 240),
-        dpos: { x: -1, y: 0 },
+        color: new Color(0, 255, 255),
+        dpos: { x: -1, y: -1 },
       },
       {
         color: new Color(230, 230, 230),
@@ -116,6 +116,7 @@ class Sketch extends Engine {
     this.ctx.fillRect(0, 0, this.width, this.height);
     // all coords are relative to y = height/2
     this.ctx.translate(0, this.height / 2);
+    this.ctx.globalCompositeOperation = "screen";
     this.ctx.lineWidth = this._lines_width;
 
     for (let i = 0; i < lines.length; i++) {
@@ -126,8 +127,7 @@ class Sketch extends Engine {
         this.ctx.translate(this._line_colors[j].dpos.x, this._line_colors[j].dpos.y);
 
         const current_color = this._line_colors[j].color;
-        if (j < this._line_colors[j] - 1) current_color.alpha = alpha / 4;
-        else current_color.alpha = alpha;
+        current_color.alpha = alpha;
 
         this.ctx.strokeStyle = current_color.rgba;
 
