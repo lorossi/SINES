@@ -24,7 +24,9 @@ But here we go again, staring at an empty screen. Is really that important to wr
 
 Yes. I just hate writing READMEs, that's all. Usually I would say something about the technology or some details about the implementations, but there's none. It's just an HTML5 canvas element on which I draw using [a custom boilerplate that I am developing.](https://github.com/lorossi/empty-html5-canvas-project)
 
-It's just a series of sines drawn with some interval, looped over a period of frames. I would provide a link to run this on your own computer but it's so slow that it wouldn't make sense. I'm going to leap to C++ because it takes way too much time to render this kinds of videos.
+It's just a series of sines drawn with some interval, looped over a period of frames. I would provide a link to run this on your own computer but it has no interactivity so it doesn't too much sense. If you really want to try this in your browser, just clone the repo and run in your machine.
+
+I'm going to leap to C++ because it takes way too much time to render this kinds of videos.
 
 ## Lame. Where do I see this video?
 
