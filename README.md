@@ -1,36 +1,36 @@
-# Empty HTML5 Canvas Project
+# SINES
 
-I got bored of creating a new document every time.
+## But first, some background
 
-Contains all the needed files to create a new HTML5 page with a JS canvas inside.
+*Well, there's none.* Honestly I'm running out of my writing creativity. I am starting to get really envious of people who can write coherent and non-repetitive description for each project.
 
-Just clone the repo or download the last release.
+Probably the whole issue has to be found in my workflow, described by these simple steps:
 
-## Cool. Do you have some documentation?
+1. Have an idea
+1. Try to code it
+1. Realize that I don't like it
+1. Go to 2 and repeat until I am satisfied
+1. Export as a video
+1. Procrastinate for months **IMPORTANT**
+1. Write a semi-decent README and make the repo public
+1. Wait (as in procrastinate) for a few more months **IMPORTANT**
+1. Publish the rendered images and video on my [Instagram profile](https://www.instagram.com/lorossi97/)
 
-Well, not really. But it's easy to use:
+If I only wrote my READMEs while creating the project, I would save myself from this tedious process that I hate.
 
-All you have to do is write your code inside the `sketch.js` file. Inside you will find 3 functions
+But here we go again, staring at an empty screen. Is really that important to write a README?
 
-- `preload()` it's run only once. You should put there anything that you want to configure and never touch again
-- `setup()` it's run once, but I do recommend putting in there every part of your code that you might need to re-initialize
-- `draw()` it's run continuosly, at a certain set frame rate.
+## Are you ok?
 
-You also have access to some internal variables:
+Yes. I just hate writing READMEs, that's all. Usually I would say something about the technology or some details about the implementations, but there's none. It's just an HTML5 canvas element on which I draw using [a custom boilerplate that I am developing.](https://github.com/lorossi/empty-html5-canvas-project)
 
-- `this.width` and `this.height` containing the size (in pixels) of the canvas
-- `this.frameCount` and `this.frameRate` containing, well, the number of rendered frames and the current framerate. You can also set the frame rate using this variable (by default the draw function runs ad 60fps).
-- `this.ctx` and `this.canvas`, with the former needed in order to draw
+It's just a series of sines drawn with some interval, looped over a period of frames. I would provide a link to run this on your own computer but it's so slow that it wouldn't make sense. I'm going to leap to C++ because it takes way too much time to render this kinds of videos.
 
-and some internal functions:
+## Lame. Where do I see this video?
 
-- `this.noLoop()` and `this.loop()` that will stop and restart the draw function
-- `this.calculatePressCoords()` that accepts the event from the mouse/touch screen interaction as a parameter and returns the coordinates relative to the canvas
-- `this.calculatePressCoords()` that accepts the event from the keyboad interaction ad a parameter and returns the pressed key and some infos about the type of keystroke
-- a lot of event handlers:
-  - `this.click()`,  `this.mouseup()`, `this.mousedown()`, `this.mousemove()`, regarding the mouse and the touch screen interactions
-  - `this.keydown()` regarding keyboard interactions
-  - All these functions have an optional parameter `e` that will contain the touch event (and it's needed in order to know which key has been pressed or where the mouse event happened)
+On my [Instagram profile](https://www.instagram.com/lorossi97/) or on a super choppy, compressed, low-frameratey, heavy as hell GIF here below. You can always clone the repo and view the source video in the `output` folder.
+
+![rendered-gif](output/output.gif)
 
 ## Credits
 
