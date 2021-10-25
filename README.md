@@ -14,7 +14,7 @@ Probably the whole issue has to be found in my workflow, described by these simp
 1. Procrastinate for months **IMPORTANT**
 1. Write a semi-decent README and make the repo public
 1. Wait (as in procrastinate) for a few more months **IMPORTANT**
-1. Publish the rendered images and video on my [Instagram profile](https://www.instagram.com/lorossi97/)
+1. Publish the rendered images and video on my [Instagram profile](https://www.instagram.com/p/CVdwLFPsqQ_/)
 
 If I only wrote my READMEs while creating the project, I would save myself from this tedious process that I hate.
 
